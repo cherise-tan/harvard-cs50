@@ -115,12 +115,75 @@ void cough(int n){
 * To compile with the library: ```clang hello.c -lcs50```
     * ```-l``` stands for "link"
 
-##### Other Data Types with printf
-* ```bool```
-* ```char```, ```%c``` 
-* ```double```
-    * A double uses 8 bytes (64 bits) -> has a higher level of precision
-* ```float```, ```%f```
-    * A float uses 4 bytes (32 bits)
+##### Data Types
 * ```int```, ```%i```
+    * Uses 4 bytes (32 bits) of memory. Range is ~-2 billion -> +2 billion
+    * ```unsigned int``` will double the positive range, at the cost of disallowing negative values
+* ```char```, ```%c``` 
+    * Uses 1 byte (8 bits) to store a single character. Range is -128 -> +127
+* ```double```
+    * A double uses 8 bytes (64 bits) to store FLOATING POINT VALUES -> has a higher level of precision
+* ```float```, ```%f```
+    * A float uses 4 bytes (32 bits) to store FLOATING POINT VALUES
 * ```long```, ```%l```
+* CS50 data types
+    * ```bool```
+    * ```string```
+
+##### Structures and Defined Types
+* Later in the course, will also encounter STRUCTURES (structs) and DEFINED TYPES (typedefs) which afford great flexibility in creating data types for your programs
+
+### Command Line
+* ```ls```: lists everything in the folder
+* ```cd```: change directory to the ROOT directory
+* ```cd ..``` : allows you to move up a directory (to the parent directory)
+* ```cd **********```: moves you into the matching child direcoty
+* ```pwd```: present working directory -> tells us where we are (the path it takes to get there)
+* ```mkdir```: make a directory (aka folder)
+* ```cp <source> <destination>```: copy a file - takes two inputs: a SOURCE and a DESTINATION
+	* E.g. cp hello.txt hi.txt: will create a copy of 'hello.txt' called 'hi.txt'
+* ```cp -r <source> <destination>```: will copy an entire folder and all its contents
+	* '-r' stands for RECURSIVE: will dive into the folder and copy everything inside it
+	* E.g. cp -r pset0 pset1
+* ```rm <file>```: will remove a file -> there is NO WAY TO RECOVER THIS FILE 
+	* E.g. rm hi.txt -> will ask you to confirm you want to delete this file
+* ```rm -f <file>```: will forcibly remove a file, without getting the check prompt
+	* 'f' stands for FORCE
+* ```rm -r <folder>```: will recursively remove an ENTIRE directory
+* ```rm -rf <folder>```: will recursively and forcibly remove an entire directory
+* ```mv <source> <destination>```: will MOVE a file
+    * E.g. mv greddy.c greedy.c: will move the contents of 'greddy.c' into a new file called 'greedy.c' -> effectively RENAMING it
+
+### Conditional Statements
+#### Switch Statements
+```
+int x = GetInt();
+switch (x)
+{
+  case 1: printf("One!\n");
+  break;
+  case 2: printf("Two!\n");
+  break;
+  case 3: printf("Three!\n");
+  break;
+  default: printf("Sorry!\n");
+}
+```
+* It is important to ```break;``` between each case, or you will 'fall through' each case (unless this is the desired behaviour)
+
+#### Temporary Operators
+```
+int x;
+if (expr)
+{  x = 5;  }
+else
+{ x = 6;  }
+
+// is functionally identical to
+
+int x = (expr) ? 5 : 6;
+```
+* The TEMPORARY OPERATOR ?: is useful for writing trivially short conditional branches
+* Basically, if 'expr' is TRUE -> x wil equal 5
+* If 'expr' is FALSE -> x will equal 6
+
