@@ -112,6 +112,8 @@ void cough(int n){
 * ```#include <cs50.h>``` 
     * Includes the ```string``` variable type, ```get_string``` function
     * Other functions include: ```get_char```, ```get_double```, ```get_float```, ```get_int```, ```get_long```
+* To compile with the library: ```clang hello.c -lcs50```
+    * ```-l``` stands for "link"
 
 ##### Other Data Types with printf
 * ```bool```
@@ -122,5 +124,3 @@ void cough(int n){
     * A float uses 4 bytes (32 bits)
 * ```int```, ```%i```
 * ```long```, ```%l```
-
-
