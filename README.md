@@ -18,9 +18,6 @@ Collection of notes, problem sets and projects for Harvard CS50: Introduction to
 * Computers also use binary to represent images -> RGB
     * Within 3 bytes, each representing some amount of red, green and blue, we can represent millions of colours
 
-### Algorithms
-* ALGORITHMS are step-by-step instrutions for solving a problem
-
 ## Week 1
 ### C
 ```
@@ -59,36 +56,6 @@ printf("x + y = %i\n", x + y);
 #### Floats and Decimel Places
 ```printf("x / y = %.7f\n", x / y);```
 * ```%.7f``` specifies the number of decimel places required
-
-#### Creating Functions
-```
-void cough(void);
-int main(void){
-    for (nt i = 0; i < 3; i++){
-        cough();
-    }
-}
-void cough(void){
-    printf("cough\n```);
-}
-```
-* Need to declare the function before it is referenced ->  ```void cough(void)``` at the top of the page
-* ```void cough``` indicates the function doesn't return anything
-* ```cough(void)``` indicates the function doesn't take any inputs
-
-This can be further abstracted
-```
-void cough(int n);
-int main(void){
-    cough(3);
-}
-void cough(int n){
-    for (int i = 0; i < n; i++){
-        printf("cough\n");
-    }
-}
-```
-* ```void cough(int n)``` indicates that the "cough" function takes an INPUT "n" -> aka an ARGUMENT
 
 ### Using the CS50 Sandbox
 * First need to save the file -> e.g. "hello.c" (indicates it is written in C)
@@ -190,6 +157,29 @@ int x = (expr) ? 5 : 6;
 
 ## Week 2
 
+
+
+
+
+
+### Functions
+* Function Declarations: ```return-type name(argument-list);```
+    * The ```return-type``` is the type of variable the function will output
+    * The ```argument-list``` is the comma-separated set of inputs to your function, each of which has a type and a name
+    * Examples:
+        ```int add_two_ints(int a, int b);```
+
+* Function Definitions: 
+    ```
+    float add_two_ints(int a, int b){
+        return a + b;
+    }
+    ```
+* Function Calls: ```int c = add_two_ints(a, b);```
+* Functions with VOID
+    ```void cough(void)```
+        * ```void cough``` indicates the function doesn't return anything
+        * ```cough(void)``` indicates the function doesn't take any inputs
 
 
 ### Arrays
