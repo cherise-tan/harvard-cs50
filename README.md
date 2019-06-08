@@ -4,6 +4,7 @@ Collection of notes, problem sets and projects for Harvard CS50: Introduction to
 ### Sections
 * [Week 0](#Week-0)
 * [Week 1](#Week-1)
+* [Week 2](#Week-2)
 
 ## Week 0
 * A BYTE is 8 BITS
@@ -187,3 +188,109 @@ int x = (expr) ? 5 : 6;
 * Basically, if 'expr' is TRUE -> x wil equal 5
 * If 'expr' is FALSE -> x will equal 6
 
+## Week 2
+
+
+
+### Arrays
+* Arrays are used to hold values of the same data type at continuous memory locations
+* Array declarations: ```type name[size];``` -> e.g. ```int grades[8];```
+    * Where ```type``` refers to the kind of variable each element of the array will be
+    * Remember arrays range from index 0 -> (n-1); the above array indexes will range from 0 - 7
+* Array initialisation requires special syntax to fill up the array with starting values
+    * Instantiation syntax: ```bool truth[3] = { false, true, true };```
+        * If using this syntax, don't need to indicate the size of the array
+        * Can just use: ```bool truth[] = { false, true, true };```
+    * Individual element syntax: ```bool truth[3];   truth[0] = false;   ...```
+    * Can also use a loop to iterate over the array to assign values (recommended for large arrays)
+* Arrays can consist of more than a specific dimension. You can have as many size specifiers as you wish
+    * ```bool battleship[10][10];```
+    * Can think of this as 10 x 10 grid of cells
+    * NB in memory it's really just a 100 element one-dimensional array
+    * Multidimensional arrays are great ABSTRACTIONS to help visualise game boards or other complex representations
+* In C, while we can treat individual elements of arrays as variables, we CANNOT treat entire arrays themselves as variables
+    * In C, we cannot assign one array to another array using ```=```
+    * Instead must use a loop to copy over the elements one at a time
+        ```
+        int foo[5] = { 1, 2, 3, 4, 5 };
+        int bar[5];
+        for (int j = 0; j < 5; j++){
+            bar[j] = foo[j];
+        }
+        ```
+* In C, most variables are PASSED BY VALUE in function calls (i.e. it receives a local copy of the value that is passed down; not the original value itself)
+    * Arrays are instead PASSED BY REFERENCE -> the callee receives the ACTUAL array, not a copy of it
+
+### Sorting & Searching Algorithms
+#### Selection Sort
+* Find the SMALLEST unsorted element in an array and swap it with the FIRST unsorted element of the array
+    * Builds a sorted list one element at a time
+* ```Ω(n^2) -> O(n^2)```   
+    * Best-case + Worst-case: have to iterate over each of the 'n' elements of the array, which must be repeated 'n' times -> since only one element gets sorted on each pass
+* Pseudocode: 
+    * Repeat until no unsorted elements remain
+        * Search the unsorted part of the data to find the smallest value
+        * Swap the smallest found value with the first element of the unsorted part
+        * Can consider the new first element of the array to be SORTED
+
+#### Bubble Sort
+* Swap ADJACENT PAIRS of elements if they are out of order, effectively "bubbling" larger elements to the right and smaller ones to the left
+* ```Ω(n) -> O(n^2)``` (Better than selection sort)
+    * Best-case: the array is already perfectly sorted, so no swaps are made on the first pass
+    * Worst-case: the array is in reverse order, and we have to 'bubble' each of the 'n' elements all the way across the array
+        * Since we can only fully bubble one element into position per pass, we must do this 'n' times
+* Pseudocode:
+    * Set swap counter to a non-zero value
+    * Repeat until the swap counter is '0'
+        * Reset swap counter to '0'
+        * Look at each adjacet pair
+            * If two adjacent elements are not in order, swap them and then add '1' to te swap counter
+    * NB: after each iteration, do not need to look at the final value in the next iteration. This is because the highest value will always be bubbled right to the end
+        * Can consider the final value to be part of the 'sorted' portion of the array
+
+#### Insertion Sort
+* Proceed once through the array from left-to-right, SHIFTING elements as necessary to insert each element into its correct place -> the sorted array is built ONE ELEMENT at a time
+* ```Ω(n) -> O(n^2)```
+    * Best-case: The array is already perfectly sorted, and we simply keep moving the line between 'sorted' and 'unsorted' as we examine each element
+    * Worst-case: The aray is in revers order, and we have to shift each of the 'n' elements 'n' positions each time we make an insertion
+* Pseudocode:
+    * Call the first element of the array "sorted"
+    * Repeat until all elements are sorted:
+        * Look at the next unsorted element, insert into the 'sorted' portion by shifting the requisite number of elements
+
+#### Merge Sort
+* SPLIT the full array into subarrays, then MERGE those subarrays back together in the correct order
+    * Merge sort leverages RECURSION to do this
+* ```Ω(n log n) -> O (n log n)``` 
+    * Best-case: The array is already perfect sorted, but still need to split and recombine it
+    * Worst-case: Have to split 'n' elements up and then recombine them, effectively doubling the srted subarrays as we build them (combining sorted 1-element arrays into 2-element arrays, combining sorted 2-element arrays into 4-element arrays...)
+* Pseudocode:
+    * Sort the left half of the array (assuming n > 1)
+    * Sort the right half of the array (assuming n > 1)
+    * Merge the two halves together
+    * NB array keeps being split into smaller sub-arrays until each sub-array contains only one element
+
+#### Linear Search
+* ITERATE across the array from left-to-right, trying to find the target element
+* ```Ω(1) -> O(n)```
+    * Best-case: The target element is the first element in the array
+    * Worst-case: We have to look through the entire array of 'n' elements
+* Pseudocode:
+    * Repeat, starting at the first element:
+        * If the first element is the target, stop
+        * Otherwise, move to the next element
+
+#### Binary Search
+* Given a SORTED array, DIVIDE AND CONQUER by systematically eliminating half of the remaining elements in the search for the target element
+* ```Ω(1) -> O(log n)``` (More effective IF array is already sorted)
+    * Best-case: the target element is the first element found, so can stop searching after that    
+    * Worst-case: have to divide a list of 'n' elements in half repeatedly to find the target element, either because the target element will be found at the end of the last division, or it doesn't exist in the array at all
+* The algorithm will divide and conquer, reducing the search area by half each time, trying to find a target number -> it MUST be sorted first in order to use this power
+* Pseudocode:
+    * Repeat until the (sub)array is of size 0
+        * Calculate the middle point of the current (sub)array
+        * If the target is at the middle, stop
+        * Otherwise, if the target < middle, repeat -> changing the end point to be just to the left of the middle
+        * Otherwise, if the target > middle, repeat -> changing the start point to be just to the right of the middle
+
+### Debugging
