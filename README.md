@@ -36,6 +36,34 @@ int main(void)
 * For Loop:
     * ```for (int i = 0; i < 50; i++) {...};```
 
+#### Using Libraries
+* Need to use libraries (sets of code) to tell our program what certain things are
+* ```#include <stdio.h>``` is a library that comes with C, that stands for "standard input/output" 
+    * Includes the ```printf``` function
+* ```#include <cs50.h>``` 
+    * Includes the ```string``` variable type, ```get_string``` function
+    * Other functions include: ```get_char```, ```get_double```, ```get_float```, ```get_int```, ```get_long```
+* To compile with the library: ```clang hello.c -lcs50```
+    * ```-l``` stands for "link"
+
+##### Data Types
+* ```int```, ```%i```
+    * Uses 4 bytes (32 bits) of memory. Range is ~-2 billion -> +2 billion
+    * ```unsigned int``` will double the positive range, at the cost of disallowing negative values
+* ```char```, ```%c``` 
+    * Uses 1 byte (8 bits) to store a single character. Range is -128 -> +127
+* ```double```
+    * A double uses 8 bytes (64 bits) to store FLOATING POINT VALUES -> has a higher level of precision
+* ```float```, ```%f```
+    * A float uses 4 bytes (32 bits) to store FLOATING POINT VALUES
+* ```long```, ```%l```
+* CS50 data types
+    * ```bool```
+    * ```string```
+
+##### Structures and Defined Types
+* Later in the course, will also encounter STRUCTURES (structs) and DEFINED TYPES (typedefs) which afford great flexibility in creating data types for your programs
+
 #### Getting User Input
 ```
 string answer = get_string("What's your name?\n");
@@ -73,33 +101,22 @@ printf("x + y = %i\n", x + y);
 * Can further abstract away and just type ```make hello```
     * ```make``` uses ```clang``` to compile our code from ```hello.c``` into ```hello```
 
-#### Using Libraries
-* Need to use libraries (sets of code) to tell our program what certain things are
-* ```#include <stdio.h>``` is a library that comes with C, that stands for "standard input/output" 
-    * Includes the ```printf``` function
-* ```#include <cs50.h>``` 
-    * Includes the ```string``` variable type, ```get_string``` function
-    * Other functions include: ```get_char```, ```get_double```, ```get_float```, ```get_int```, ```get_long```
-* To compile with the library: ```clang hello.c -lcs50```
-    * ```-l``` stands for "link"
-
-##### Data Types
-* ```int```, ```%i```
-    * Uses 4 bytes (32 bits) of memory. Range is ~-2 billion -> +2 billion
-    * ```unsigned int``` will double the positive range, at the cost of disallowing negative values
-* ```char```, ```%c``` 
-    * Uses 1 byte (8 bits) to store a single character. Range is -128 -> +127
-* ```double```
-    * A double uses 8 bytes (64 bits) to store FLOATING POINT VALUES -> has a higher level of precision
-* ```float```, ```%f```
-    * A float uses 4 bytes (32 bits) to store FLOATING POINT VALUES
-* ```long```, ```%l```
-* CS50 data types
-    * ```bool```
-    * ```string```
-
-##### Structures and Defined Types
-* Later in the course, will also encounter STRUCTURES (structs) and DEFINED TYPES (typedefs) which afford great flexibility in creating data types for your programs
+#### Debugging in the CS50 IDE
+* ```debug50```
+    * This is a GUI (graphical user interface) wrapper for a program called GDB, which is a debugging program
+    * Need to define a BREAK POINT: code will run up til this point and then pause
+        * Do this by clicking to the LEFT of the line of code (will create a red dot)
+    * Command line: ```debug50 ./<title>```
+        * Debugger tab on the right will then pop open
+    * Click 'play' button to start running through code
+    * Can then take slow steps through the program by clicking 'step over' button
+    * If going into a block (e.g. an ```if``` block) -> click 'step into' button
+        * Click on 'step out' to exit this block
+* ```eprintf("...");```
+    * Stands for "error printf" -> basically ```printf``` but for the person testing the program
+    * Instead of just printing out to the console, it will also say WHERE in the code it is coming from
+* ```help50 make <title>```
+    * This is a virtual teaching fellow which will give clues and hints about what might be going on in your program, without immediately telling you the full answer
 
 ### Command Line
 * ```ls```: lists everything in the folder
@@ -180,7 +197,6 @@ int x = (expr) ? 5 : 6;
     ```void cough(void)```
         * ```void cough``` indicates the function doesn't return anything
         * ```cough(void)``` indicates the function doesn't take any inputs
-
 
 ### Arrays
 * Arrays are used to hold values of the same data type at continuous memory locations
@@ -283,4 +299,3 @@ int x = (expr) ? 5 : 6;
         * Otherwise, if the target < middle, repeat -> changing the end point to be just to the left of the middle
         * Otherwise, if the target > middle, repeat -> changing the start point to be just to the right of the middle
 
-### Debugging
