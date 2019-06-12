@@ -94,6 +94,8 @@ printf("x + y = %i\n", x + y);
     * This will create a new file called "a.out"
     * ```./a.out``` will then run the program
         * ```./``` just means the current folder
+* If we want to use a library via ```#include <cs50.h>```, need to add the flag ```clang hello.c -lcs50```
+    * The ```-l``` tag links the ```cs50``` file
 * Can change the name of our program from "a.out" to something else
     * ```clang -o hello hello.c```
         * ```-o hello``` tells the program ```clang``` to save the compiled output as just ```hello```
@@ -117,6 +119,7 @@ printf("x + y = %i\n", x + y);
     * Instead of just printing out to the console, it will also say WHERE in the code it is coming from
 * ```help50 make <title>```
     * This is a virtual teaching fellow which will give clues and hints about what might be going on in your program, without immediately telling you the full answer
+* ```style50 file.c``` will give suggestions on what to change to improve the style of the code
 
 ### Command Line
 * ```ls```: lists everything in the folder
@@ -173,8 +176,17 @@ int x = (expr) ? 5 : 6;
 * If 'expr' is FALSE -> x will equal 6
 
 ## Week 2
+### Compiling
+* 'Compiling' source code into machine code is made up of a number of small steps:
+* Preprocessing: involves looking at lines that start with ```#```
+    * e.g. ```#include <cs50.h>``` will tell ```clang``` to look at that header file first, as it contains content we want to use in our program
+    * Then, ```clang``` will essentially replace the contents of those header files into the program
+* Compiling: turns source code to assembly code, which can be understood by the CPU more directly 
+    * These instructions are lower-level, and generally operate on bytes as opposed to abstractions like variable names
+* Assembling: converts assembly code to instructions in binary
+* Linking: includes the contents of linked libraries, such as ```cs50.c``` into the program as binary
 
-
+### Arrays
 
 
 
