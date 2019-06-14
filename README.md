@@ -186,11 +186,6 @@ int x = (expr) ? 5 : 6;
 * Assembling: converts assembly code to instructions in binary
 * Linking: includes the contents of linked libraries, such as ```cs50.c``` into the program as binary
 
-### Arrays
-
-
-
-
 ### Functions
 * Function Declarations: ```return-type name(argument-list);```
     * The ```return-type``` is the type of variable the function will output
