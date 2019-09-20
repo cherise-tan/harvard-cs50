@@ -308,8 +308,28 @@ int main(void)
 ```
 * ```islower()``` and ```toupper()``` are functions from a library called ```ctype``` that we can use to accomplish the same thing
 
-
-
+### Command Line Arguments
+* Writing ```int main(int argc, string argv[])``` when initialising the program, allows arguments to be passed to the function when running our program from the command line
+```
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        printf("hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world\n");
+    }
+}
+```
+* ```string argv[]``` states that an array of strings is being passed
+    * NB the program name is INCLUDED in this array of strings
+    * ```make hello cherise``` will have both "hello" and "cherise" in the "argv" array
+* ```int argc``` states how many words are being typed at the command line prompt
+    * NB ```make hello cherise"``` will have an ```argc``` = 2
+    * This is because both "hello" and "cherise" have both been typed after ```make```
+    * The first word is the name of the program; the second word is the argument being provided to the function
 
 ### Sorting & Searching Algorithms
 #### Selection Sort
