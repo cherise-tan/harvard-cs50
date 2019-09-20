@@ -258,6 +258,59 @@ for (int i = 0; i < strlen(s); i++) {
 
 * Technically can even write ```printf("%c %i\n", s[i], s[i])``` and this will also convert to the specified datatype
 
+#### Capitalise
+```
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After:  ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            printf("%c", s[i] - ('a' - 'A'));
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+* First need to get the string ```s```
+* If it is lowercase, need to convert it to uppercase
+    * Can do this by subtracting the difference between a lowercase ```a``` and an uppercase ```A```
+    * NB: lowercase letters have a higher value than uppercase letters
+* If it is uppercase, just print it
+
+Can also do this using pre-defined functions
+```
+#include <ctype.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After:  ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (islower(s[i]))
+        {
+            printf("%c", toupper(s[i]));
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+* ```islower()``` and ```toupper()``` are functions from a library called ```ctype``` that we can use to accomplish the same thing
+
+
+
+
 ### Sorting & Searching Algorithms
 #### Selection Sort
 * Find the SMALLEST unsorted element in an array and swap it with the FIRST unsorted element of the array
