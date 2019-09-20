@@ -234,6 +234,30 @@ int x = (expr) ? 5 : 6;
 * In C, most variables are PASSED BY VALUE in function calls (i.e. it receives a local copy of the value that is passed down; not the original value itself)
     * Arrays are instead PASSED BY REFERENCE -> the callee receives the ACTUAL array, not a copy of it
 
+### Strings
+* Strings are arrays of characters: "chars"
+* Incorporating ```string.h``` library will give us access to the ```strlen``` function 
+    * ```strlen(string)``` will return the number of characters in a string (i.e. string length)
+* Can use array syntax to access individual string characters: e.g. ```string[i]```
+
+#### ASCII
+* Can look up which ASCII character a certain character in a string corresponds to
+```
+string s = get_string("String: ");
+for (int i = 0; i < strlen(s); i++) {
+    int c = (int) s[i];
+    printf("%c %i", s[i], c);
+}
+```
+* ```int c = (int) s[i]``` converts one data type to another data type
+    * This is known as "Casting"
+    * The data type in brackets (i.e. ```(int)```) dictates what data type you want to convert the following value (i.e. ```s[i]```) into
+    * This is then stored as the desired data type (i.e. ```int c = ```)
+
+* Technically can also do this more simply: ```int c = s[i]``` will also convert the datatype
+
+* Technically can even write ```printf("%c %i\n", s[i], s[i])``` and this will also convert to the specified datatype
+
 ### Sorting & Searching Algorithms
 #### Selection Sort
 * Find the SMALLEST unsorted element in an array and swap it with the FIRST unsorted element of the array
