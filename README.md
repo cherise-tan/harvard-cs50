@@ -331,6 +331,18 @@ int main(int argc, string argv[])
     * This is because both "hello" and "cherise" have both been typed after ```make```
     * The first word is the name of the program; the second word is the argument being provided to the function
 
+### Encryption
+* Encryption generally requires an input in addition to plaintext. A KEY is needed, which can be used to covert the plaintext to ciphertext and vice versa.
+* Caesar Cipher: rotating cipher by some number (key)   
+    * E.g. If the key is 2, "A" would become "C"
+
+### Exit Codes
+* We can indicate errors in our program by returning a value from our ```main``` function
+    * e.g. ```return 0;```
+* The ```return``` value is called an EXIT CODE
+* This can be seen in the command line 
+    * After running the program with ```./program_name```, we could then type ```echo $?``` - which would then print the last programs return value
+
 ### Sorting & Searching Algorithms
 #### Selection Sort
 * Find the SMALLEST unsorted element in an array and swap it with the FIRST unsorted element of the array
